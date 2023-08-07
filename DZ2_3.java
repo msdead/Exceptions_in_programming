@@ -12,19 +12,22 @@ public class DZ2_3 {
         System.out.println("Введите число c: ");
         double c = iScanner.nextInt();
 
-        if (a > 100) {
-            throw new NumberOutOfRangeException("Первое число вне допустимого диапазона");
-        }
-        if (b < 0) {
-            throw new NumberOutOfRangeException("Второе число вне допустимого диапазона");
-        }
-        if (a + b < 10) {
-            throw new NumberSumException("Сумма первого и второго чисел слишком мала");
-        }
-        if (c == 0) {
-            throw new DivisionByZeroException("Деление на ноль недопустимо");
-        } else {
+        try {
+            if (a > 100) {
+                throw new NumberOutOfRangeException("Первое число вне допустимого диапазона");
+            }
+            if (b < 0) {
+                throw new NumberOutOfRangeException("Второе число вне допустимого диапазона");
+            }
+            if (a + b < 10) {
+                throw new NumberSumException("Сумма первого и второго чисел слишком мала");
+            }
+            if (c == 0) {
+                throw new DivisionByZeroException("Деление на ноль недопустимо");
+            }
             System.out.println("Проверка пройдена успешно");
+        } catch (NumberOutOfRangeException | NumberSumException | DivisionByZeroException e) {
+            System.out.println("Ошибка: " + e.getMessage());
         }
     }
 }
